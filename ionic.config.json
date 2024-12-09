@@ -1,0 +1,10 @@
+{
+  "name": "TeLlevoApp",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

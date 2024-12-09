@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="registro">
+    <ion-card>
+      <h1>TeLlevo<b class="app">App</b>
+        <hr>
+        <b class="iniciar">Registrate</b>
+      </h1>
+
+      <ion-card-content>
+        <form [formGroup]="alumno"  (ngSubmit)="registrar()">
+          <ion-item>
+            <ion-label>Rut :</ion-label>
+            <ion-input type="text" placeholder="Ingrese rut sin puntos y con guión. Ejemplo(1234567-8)" formControlName="rut"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Nombre :</ion-label>
+            <ion-input type="text" placeholder="Ingrese nombre. Mínimo 3 caracteres." formControlName="nombre"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Apellido :</ion-label>
+            <ion-input type="text" placeholder="Ingrese apellido. Mínimo 3 caracteres." formControlName="apellido"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Correo :</ion-label>
+            <ion-input type="email" placeholder="Ingrese correo. Ejemplo(asd.fgh@duocuc.cl)" formControlName="correo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Fecha nacimiento :</ion-label>
+            <ion-input type="date" placeholder="Ingrese fecha nacimiento" formControlName="fecha_nac"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Cuenta con auto? </ion-label>
+            <ion-select placeholder="Seleccione" formControlName="auto">
+              <ion-select-option value="si">Tengo auto</ion-select-option>
+              <ion-select-option value="no">No tengo auto</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Contraseña :</ion-label>
+            <ion-input type="password" placeholder="Ingrese contraseña" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Repita Contraseña :</ion-label>
+            <ion-input  type="password" placeholder="Ingrese nuevamente contraseña" [(ngModel)]="verificar_password" [ngModelOptions]="{standalone: 'true'}"></ion-input>
+          </ion-item>
+          <ion-button type="submit" [disabled]="!alumno.valid" >REGISTRAR</ion-button>
+        </form>
+      </ion-card-content>
+      <div class="enlace">
+        <a routerLink='/login'>¿Volver a Iniciar Sesión?</a>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

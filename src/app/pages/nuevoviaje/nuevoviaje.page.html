@@ -1,0 +1,40 @@
+<ion-content>
+
+  
+  
+  <div class="fondo">
+    <div class="formularioViaje">
+      <form [formGroup]="viaje" (ngSubmit)="nuevoViaje()">
+
+        <ion-item>
+          <ion-label>Conductor :</ion-label>
+          <ion-input type="text" placeholder="{{usuario.rut}}" value="{{usuario.rut}}" formControlName="rut_conductor"
+            readonly></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Origen :</ion-label>
+          <input type="text" id="inicio">
+        </ion-item>
+        <ion-item>
+          <ion-label>Destino :</ion-label>
+          <input type="text" id="autocomplete">
+        </ion-item>
+        <ion-item>
+          <ion-label>Precio :</ion-label>
+          <ion-input type="number" placeholder="Ingrese precio." formControlName="precio">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Salida :</ion-label>
+          <ion-input type="time" placeholder="DD/MM/YYYY-hh/mm" formControlName="salida">
+          </ion-input>
+         <!--<ion-datetime value="2022-04-21T00:00:00"  formControlName="salida" class="datetime"></ion-datetime>--> 
+        </ion-item>
+        <ion-button type="submit" [disabled]="!viaje.valid">CREAR VIAJE</ion-button>
+      </form>
+      <div id="map"></div>
+    
+
+    </div>
+  </div>
+</ion-content>

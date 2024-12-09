@@ -1,0 +1,241 @@
+.fondo-finalizado {
+  box-shadow: none;
+  height: 82.5vh;
+  margin-top: 10vh;
+  background: transparentize($color: #000000bd, $amount: 0.3);
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(0, 0, 0);
+  }
+}
+.fondo-chat {
+  box-shadow: none;
+  height: 82.5vh;
+  margin-top: 10vh;
+  background: transparentize($color: #000000bd, $amount: 0.3);
+  background: url("../../../assets/img/fondo.jpg");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: hidden;
+  h1 {
+    margin-top: 2.5vh;
+    color: white;
+    font-family: 'Lobster';
+  }
+  .sepLista {
+    margin-top: 1.5vh;
+    background: rgba(0, 0, 0, 0.823);
+    border-radius: 10px;
+    height: 70vh;
+    width: 80vw;
+    .mensajesListas {
+      height: 80%;
+      overflow: scroll;
+      .mensajesLista {
+        padding-top: 0.3vh;
+        padding-bottom: 0.3vh;
+        text-align: center;
+        ion-row {
+          --background: none;
+          .yoLista {
+            color: rgb(182, 85, 85);
+            font-size: 2vh;
+            text-align: center;
+            font-family: Montserrat;
+          }
+          .yoListaU {
+            color: rgb(182, 85, 85);
+            font-size: 1.8vh;
+            font-family: Montserrat;
+          }
+          .tuLista {
+            color: green;
+            font-size: 1.5vh;
+            font-family: Montserrat;
+          }
+          .tuListaU {
+            color: green;
+            font-size: 2vh;
+            font-family: Montserrat;
+          }
+        }
+      }
+    }
+    .formularioChat {
+      border-top: solid;
+      border-color: black;
+      height: 20%;
+      ion-item {
+        --background: none;
+
+        ion-label {
+          --color: rgb(182, 85, 85);
+          font-size: 2vh;
+          text-align: center;
+          font-family: Montserrat;
+        }
+        ion-input {
+          --color: rgb(182, 85, 85);
+          font-size: 2vh;
+          text-align: center;
+          font-family: Montserrat;
+        }
+      }
+      ion-button {
+        --background: transparentize($color: #1e7065cb, $amount: 0.3);
+        width: 30%;
+      }
+    }
+  }
+}
+.fondo-qr {
+  box-shadow: none;
+  height: 82.5vh;
+  margin-top: 10vh;
+  background: transparentize($color: #000000bd, $amount: 0.3);
+  background: url("../../../assets/img/fondo.jpg");
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: hidden;
+  .qr {
+    ngx-qrcode {
+      margin-top: 10vh;
+      width: 60vw;
+      height: 60vh;
+    }
+  }
+  .volver {
+    ion-label {
+      margin-top: 3vh;
+      color: #355ddf;
+      font-size: 3vh;
+      margin-bottom: 3vh;
+    }
+    ion-button {
+      margin-top: 5vh;
+      color: rgba(4, 4, 43, 0.904);
+      font-family: "Montserrat";
+      --background: rgb(255, 255, 255);
+      --border-style: solid;
+      --border-width: 1px;
+      --border-color: rgba(21, 42, 231, 0.692);
+      font-weight: bold;
+    }
+  }
+}
+
+.fondo-recorrido {
+  box-shadow: none;
+  height: 82.5vh;
+  margin-top: 10vh;
+  background: transparentize($color: #000000bd, $amount: 0.3);
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: hidden;
+  #map {
+    width: 100%;
+    height: 80%;
+    display: block;
+    border-radius: 5px;
+    border: solid;
+    border-color: rgb(0, 0, 0);
+  }
+  ion-button {
+    color: rgba(255, 255, 255, 0.904);
+    font-family: "Montserrat";
+    --background: rgb(0, 0, 0);
+    font-weight: bold;
+    height: 20%;
+    width: 100%;
+  }
+}
+
+.fondo {
+  box-shadow: none;
+  height: 100vh;
+  background: transparentize($color: #f0e658bd, $amount: 0.3);
+  background: url("../../../assets/img/fondo.jpg");
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+  font-family: "Montserrat";
+  overflow: scroll;
+  ion-button {
+    margin-top: 4vh;
+    color: rgba(4, 4, 43, 0.904);
+    font-family: "Montserrat";
+    --background: rgb(255, 255, 255);
+    --border-style: solid;
+    --border-width: 1px;
+    --border-color: rgba(21, 42, 231, 0.692);
+    font-weight: bold;
+  }
+  .titulo {
+    margin-top: 12.5vh;
+    font-family: Lobster;
+    color: rgb(34, 22, 1);
+    margin-bottom: 3vh;
+  }
+  #lista {
+    background: none;
+    background: linear-gradient(#748ddf, rgba(190, 104, 17, 0.133));
+    border-bottom: solid;
+    border-top: solid;
+    border-color: white;
+    height: 30vh;
+    .item {
+      --background: none;
+      color: rgb(34, 22, 1);
+      font-weight: bold;
+      font-family: Lobster;
+      .chato {
+        height: 15vh;
+        b {
+          font-family: "Montserrat";
+        }
+        .Fuentes {
+          font-size: 2vh;
+          .rutPas {
+            color: rgb(24, 34, 71);
+          }
+          .buttonsOptions {
+            margin-top: -10vh;
+          }
+        }
+        div {
+          height: 10vh;
+          img {
+            width: 100px;
+            height: 100px;
+            position: static;
+            border-radius: 50%;
+            border-color: #355ddf;
+            border-style: solid;
+            border-width: 4px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+<ion-content>
+  <div class="fondo" *ngIf="template == 1">
+    <h1 class="titulo">{{titulo}}</h1>
+    <h5 class="dolar"> Valor Dolar del día: {{api}}</h5>
+    <div  class="botonAbsoluto">
+      <ion-button size="default" (click)="irQr()">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-button>
+      <ion-button size="default" (click)="ngOnInit()">
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-list lines="none" id="lista" *ngFor="let aux of total">
+      <ion-item class="item">
+        <div>
+          <img alt="Silhouette of mountains" src="{{aux.dato.vehiculo.imagen}}" />
+        </div>
+        <ion-button slot="end" size="default" (click)="irDetalle(aux.dato.rut)">
+          ir Detalle
+          <ion-icon name="information-circle" slot="end"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item class="item">
+        <h1>{{aux.dato.nombre}} {{aux.dato.apellido}}</h1>
+      </ion-item>
+      <ion-item class="item">
+        <h3>Marca: {{aux.dato.vehiculo.marca}} {{aux.dato.vehiculo.modelo}}</h3>
+      </ion-item>
+      <ion-item class="item">
+        <h5 id="precio">Precio: $ {{aux.precios.precio}} </h5>
+      </ion-item>
+    </ion-list>
+
+  </div>
+  <div class="fondo-detalle" *ngIf="template == 2">
+    <div class="formularioViaje">
+      <div id="map"></div>
+      <ion-item class="imagen">
+        <img class="image" src="{{detalle.dato.vehiculo.imagen}}" alt="">
+      </ion-item>
+      <ion-item>
+        <div>CONDUCTOR: {{detalle.dato.nombre}} {{detalle.dato.apellido}}</div>
+      </ion-item>
+      <ion-item>
+        <div>CORREO: {{detalle.dato.correo}}</div>
+      </ion-item>
+      <ion-item>
+        <div>PASAJEROS: {{detalle.dato.vehiculo.pasajeros}}</div>
+      </ion-item>
+      <ion-item *ngIf="detalle.precios.capacidad > 0">
+        <div>DISPONIBLE: {{detalle.precios.capacidad}} pasajeros restantes</div>
+      </ion-item>
+      <ion-item *ngIf="detalle.precios.capacidad <= 0">
+        <div>DISPONIBLE: Sin cupo</div>
+      </ion-item>
+      <ion-item>
+        <div>
+          <p>PRECIO: $ {{detalle.precios.precio}} pesos o $ {{dolar}} dólares.</p>
+        </div>
+      </ion-item>
+      <ion-item>
+        <div>HORA SALIDA: {{detalle.precios.salida}} horas</div>
+      </ion-item>
+      <div>
+
+        <ion-button slot="end" size="default" (click)="irViajes()">
+          Volver
+          <ion-icon name="play-back-outline" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button *ngIf="detalle.precios.capacidad > 0" slot="end" size="default"
+          (click)="irSolicitar(detalle.precios.rut_conductor)">
+          Solicitar
+          <ion-icon name="enter-outline" slot="end"></ion-icon>
+        </ion-button>
+        <ion-button (click)="cambiarChat(receptorPas, detalle.precios.rut_conductor)">
+          <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+  <div class="fondo-leer" *ngIf="template == 3">
+    <ion-item>
+      <ion-input [(ngModel)]="idViajes" placeholder="Inserte identificador pasaje."></ion-input>
+    </ion-item>
+
+    <div class="botones-qr">
+      <ion-button size="default" (click)="leerQr()">
+        Leer
+        <ion-icon name="book-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" size="default" (click)="irViajes()">
+        Volver
+        <ion-icon name="play-back-outline" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  <div class="fondo-chat" *ngIf="template == 6">
+    <h1>Resuelve tus dudas</h1>
+    <div class="sepLista">
+      <div *ngIf="losMensajes != undefined" class="mensajesListas">
+        <div *ngFor="let aux of losMensajes; let i = index" [attr.data-index]="i" class="mensajesLista">
+          <ion-row *ngIf="aux['rut']==emisorCond">
+            <ion-col size="3" class="yoListaU">
+              {{aux['rut']}} :
+            </ion-col>
+            <ion-col size="9" class="yoLista">
+              {{aux['message']}}
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="aux['rut']==receptorPas">
+            <ion-col size="9" class="tuListaU">
+              {{aux['message']}}
+            </ion-col>
+            <ion-col size="3" class="tuLista">
+              : {{aux['rut']}}
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+      <div class="formularioChat">
+        <form [formGroup]="mensaje" (ngSubmit)="enviarMensaje()">
+          <ion-item>
+            <ion-label>Mensaje: </ion-label>
+            <ion-input type="text" placeholder="Escribe tu consulta" formControlName="message"></ion-input>
+          </ion-item>
+
+          <ion-button type="button" (click)="volverMenu()">
+
+            <ion-icon name="chevron-back-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button type="button" (click)="recargarChat()">
+
+            <ion-icon name="refresh-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button type="submit">
+
+            <ion-icon name="chevron-forward-circle-outline"></ion-icon>
+          </ion-button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>

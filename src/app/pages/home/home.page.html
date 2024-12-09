@@ -1,0 +1,89 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+<ion-content [fullscreen]="true" class="ion-text-center">
+  <div class="fondo">
+    <ion-header>
+      <div class="flexibles">
+        <!--<div class="separar" (click)="perfil(sesion.rut)">Perfil</div>
+        <div class="separar" (click)="irCrearViaje()">Nuevo viaje</div>
+        <div class="separar" *ngIf="sesion.auto == 'si'" (click)="irSolicitudViaje()">Solicitudes viajes</div>
+        <div class="separar" *ngIf="sesion.tipo_usuario == 'administrador'" (click)="administrar(sesion.rut)">
+        Administración</div>-->
+        <!--<div (click)="irCrearViaje()">
+          sksks
+        </div>-->
+        <div class="separar" *ngIf="sesion.rut != undefined" (click)="cerrarSesion()">
+          <span style="margin-right: 5px;">
+            Cerrar Sesión
+          </span>
+          <ion-icon name="log-in-outline"></ion-icon>
+
+        </div>
+
+      </div>
+    </ion-header>
+    <ion-card>
+      <ion-card-content class="contenido_home">
+        <div class="titulo">
+          <span class="color_azul"><b>Te llevo</b> <b class="color_naranja">APP</b></span>
+        </div>
+        <span class="parrafo">
+          <div *ngIf="sesion.vehiculo == 'undefined' && sesion.auto=='no'">
+            <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
+            estudiantes y para estudiantes de la institución <b>DUOC UC</b>
+            con el fin de reducir los problemas de viaje de los estudiantes
+            de nuestra querida institución.
+            ¡ESPERAMOS DISFRUTES TU VIAJE!
+          </div>
+          <div *ngIf="sesion.vehiculo == 'undefined' && sesion.auto=='si'">
+            ¡QUERIDO ESTUDIANTE, NO OLVIDES REGISTRAR UN VEHICULO PARA COMENZAR A CREAR VIAJES Y TRANSPORTAR OTROS USUARIOS!
+          </div>
+          <div *ngIf="sesion.vehiculo != 'undefined' && sesion.auto=='si'">
+            <b class="color_azul">TeLlevo<span class="color_naranja">App</span></b> es una aplicación pensada por
+            estudiantes y para estudiantes de la institución <b>DUOC UC.</b>
+
+            ¡CREA UN VIAJE!
+          </div>
+
+        </span>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="">
+      <!--
+      <ion-tab-button tab="" (click)="cargarHome(sesion.rut)">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+
+      </ion-tab-button>-->
+      <ion-tab-button tab="administrar/{{sesion.rut}}/{{sesion.id}}" *ngIf="sesion.tipo_usuario == 'administrador'">
+        <ion-icon name="close-circle-outline"></ion-icon>
+
+        <ion-label>Admin</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="perfil/{{sesion.rut}}/{{sesion.id}}">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="disponible/{{sesion.rut}}/{{sesion.id}}"
+        *ngIf="sesion.auto == 'no' && sesion.tipo_usuario != 'administrador'">
+        <ion-icon name="airplane-outline"></ion-icon>
+        <ion-label>Buscar</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="nuevoviaje/{{sesion.rut}}/{{sesion.id}}"
+        *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador' && sesion.vehiculo != 'undefined' && tiene_viaje == undefined">
+        <ion-icon name="location-outline"></ion-icon>
+        <ion-label>Crear Viaje</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="solicitud/{{sesion.rut}}/{{sesion.id}}"
+        *ngIf="sesion.auto == 'si' && sesion.tipo_usuario != 'administrador' && sesion.vehiculo != 'undefined' &&  tiene_viaje != undefined && tiene_viaje.pasajeros!='sin'">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-label>Solicitudes</ion-label>
+        <ion-badge>{{tiene_viaje.pasajeros.length}}</ion-badge>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
